@@ -9,6 +9,7 @@ def Dilate(image):
         return img_dilation
     except cv2.error:
         print("Image not found")
+        return None
 
 
 def Blur(image):
@@ -17,6 +18,7 @@ def Blur(image):
         return dst
     except cv2.error:
         print("Image not found")
+        return None
 
 
 def GrayScale(image):
@@ -25,3 +27,4 @@ def GrayScale(image):
         return gray
     except cv2.error:
         print("Image not found")
+        return None
