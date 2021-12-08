@@ -10,7 +10,7 @@ image = cv2.imread('img/lena.jpg')
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 #Blur
-src = cv2.imread('img/lena.jpeg', cv2.IMREAD_UNCHANGED)
+src = cv2.imread('img/lena.jpg', cv2.IMREAD_UNCHANGED)
 dst = cv2.GaussianBlur(src, (59, 59), cv2.BORDER_DEFAULT)
 
 img_dilation = cv2.dilate(img, kernel, iterations=1)
