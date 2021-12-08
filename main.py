@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
 
-from filter import Dilate
+from filter import Dilate, Blur, GrayScale
 
-Dilate(cv2.imread('img/fond_discord.jpeg'))
+
+GrayScale(cv2.imread('img/fond_discord.jpeg'))
 
