@@ -1,8 +1,6 @@
 import cv2
 import os
-import sys
 
-args = sys.argv
 
 from filter import Dilate, Blur, GrayScale
 
@@ -11,10 +9,7 @@ liste = os.listdir('img')
 # Dilate(cv2.imread('img/fondDiscord.jpeg'))
 # cv2.imwrite('filtered_img/fondDiscord.jpeg')
 
-# for i in range(0 , len(args)):
-#     arg = args[i]
-#     print(arg)
-#     if arg == '--filters':
+
 
 
 for img_name in liste:
