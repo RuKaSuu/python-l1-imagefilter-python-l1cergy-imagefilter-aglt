@@ -1,6 +1,4 @@
 import sys
-from art import tprint
-from Logger import set_logs
 
 from art import tprint
 
@@ -34,7 +32,6 @@ for i, a in enumerate(args):
         print("💡 | --filter / --f  => Appliquer des filtres aux photos du dossier")
         print("💡 | --input  / --i  => Mettre le nom du dossier à importer")
         print("💡 | --output / --o  => Mettre le nom du dossier où les images seront envoyées")
-
 
 
 
