@@ -1,27 +1,35 @@
 import cv2
 import os
-from filter import Dilate, Blur, GrayScale
+import sys
 
+args = sys.argv
+
+from filter import Dilate, Blur, GrayScale
 
 liste = os.listdir('img')
 
+# Dilate(cv2.imread('img/fondDiscord.jpeg'))
+# cv2.imwrite('filtered_img/fondDiscord.jpeg')
 
-#Dilate(cv2.imread('img/fond_discord.jpeg'))
-#cv2.imwrite('filtered_img/fond_discord.jpeg')
+# for i in range(0 , len(args)):
+#     arg = args[i]
+#     print(arg)
+#     if arg == '--filters':
 
 
 for img_name in liste:
-    img_path = f'img/{img_name}'
-    image = cv2.imread(img_path)
-    image = GrayScale(image)
-    # image = Blur(image)
-    # image = Dilate(image)
 
-    output = f'filtered_img/{img_name}'
-    cv2.imwrite(output, image)
+    if not img_name.endswith('.jpeg' or '.png' or '.jpg'):
+        print("its  ot a jpg or png or jpeg, it's a " + img_name)
+    else:
+        img_path = f'img/{img_name}'
+        image = cv2.imread(img_path)
+        image = GrayScale(image)
+        image = Blur(image)
+        image = Dilate(image)
 
-    print(img_path)
-    print(image)
-    #print('filtered_img/' + i)
+        output = f'filtered_img/{img_name}'
+        cv2.imwrite(output, image)
 
-
+        print("Conversion ok " + img_name)
+        # print('filtered_img/' + i)
