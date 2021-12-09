@@ -2,9 +2,9 @@ import cv2
 import numpy as np
 
 
-def Dilate(image):
+def Dilate(image , kernel_size):
     try:
-        kernel = np.ones((5, 5), np.uint8)
+        kernel = np.ones(kernel_size, np.uint8)
         img_dilation = cv2.dilate(image, kernel, iterations=1)
         return img_dilation
     except cv2.error:
@@ -12,9 +12,9 @@ def Dilate(image):
         return None
 
 
-def Blur(image):
+def Blur(image , blur_size):
     try:
-        dst = cv2.GaussianBlur(image, (59, 59), cv2.BORDER_DEFAULT)
+        dst = cv2.GaussianBlur(image, blur_size, cv2.BORDER_DEFAULT)
         return dst
     except cv2.error:
         print("Image not found")
