@@ -1,6 +1,5 @@
 import cv2
 import os
-
 from Logger import set_logs
 from filter import Dilate, Blur, GrayScale
 
@@ -19,6 +18,7 @@ for img_name in liste:
         image = GrayScale(image)
         image = Blur(image)
         image = Dilate(image)
+        image = cv2.putText(image, "#AGLT_CORP", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
 
         set_logs("  Conversion images")
 
