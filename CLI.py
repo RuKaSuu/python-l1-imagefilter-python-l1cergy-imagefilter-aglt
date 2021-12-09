@@ -57,14 +57,16 @@ for i, a in enumerate(args):
     elif a == "--filter":
         params = args[i + 1].split("|")
 
+
         for param in params:
             param = param.split(":")
 
-            if 'grayscale' in param:
+            if param[0] == "grayscale":
+                argument[param[0]] = 0
+            else:
+                argument[param[0]] = int(param[1])
 
 
-            argument[param[0]] = int(param[1])
-            print(argument)
 
     elif a == "--start":
         Start()
