@@ -1,19 +1,38 @@
 import sys
 from typing import Dict
 
-args = sys.argv
-for i, a in enumerate(args):
-    print(a)
-print(args)
-if "--input-dir" == args[i]:
-    print("filtre")
-    inputdir = args[i + 1]
-    print(inputdir)
+from art import tprint
 
-if "--output-dir" == args[i]:
-    print("filtre")
-    outputdir = args[i + 1]
-    print(outputdir)
+from Logger import set_logs
+
+args = sys.argv
+
+for i, a in enumerate(args):
+    #print(a)
+    #print(args)
+    if "--input-dir" == a:
+        print("input : ")
+        inputdir = args[i + 1]
+        print(inputdir)
+
+    elif "--output-dir" == a:
+        print("output : ")
+        outputdir = args[i + 1]
+        print(outputdir)
+
+    elif "--filter" == a or "--f" == a:
+        print("filtre")
+        #prendre la valeur des filtres de la case d'après
+
+    elif "--help" == a:
+        set_logs("Help menu activated")
+
+        tprint("HELP => ")
+
+        #Afficher les commandes qu'on peut utiliser et pourquoi faire
+        print("💡 | --filter / --f  => Appliquer des filtres aux photos du dossier")
+        print("💡 | --input  / --i  => Mettre le nom du dossier à importer")
+        print("💡 | --output / --o  => Mettre le nom du dossier où les images seront envoyées")
 
 
 

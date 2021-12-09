@@ -1,20 +1,15 @@
 import cv2
 import os
 
-
+from Logger import set_logs
 from filter import Dilate, Blur, GrayScale
 
 liste = os.listdir('img')
 
-# Dilate(cv2.imread('img/fondDiscord.jpeg'))
-# cv2.imwrite('filtered_img/fondDiscord.jpeg')
-
-
-
 
 for img_name in liste:
 
-    if not img_name.endswith('.jpeg' or '.png' or '.jpg'):
+    if not img_name.endswith(('.jpeg', '.png', '.jpg')):
         print("its  ot a jpg or png or jpeg, it's a " + img_name)
     else:
         img_path = f'img/{img_name}'
@@ -23,8 +18,9 @@ for img_name in liste:
         image = Blur(image)
         image = Dilate(image)
 
+        set_logs("  Conversion images")
+
         output = f'filtered_img/{img_name}'
         cv2.imwrite(output, image)
 
-        print("Conversion ok " + img_name)
-        # print('filtered_img/' + i)
+        print("\n Conversion ok " + img_name + '\n')
