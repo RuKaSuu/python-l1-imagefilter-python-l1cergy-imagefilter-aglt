@@ -15,7 +15,7 @@ def set_logs(action, message=None):
         logMessage ="[" + str(datetime.now()) + "]" + action + " : " + message
 
     with open('logs/main.log', 'a') as log_file:
-        log_file.write(logMessage)
+        log_file.write(logMessage + '\n')
 
     print(logMessage)
 

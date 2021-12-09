@@ -25,7 +25,7 @@ for i, a in enumerate(args):
         #prendre la valeur des filtres de la case d'après
 
     elif "--help" == a:
-        set_logs("Help menu activated")
+        set_logs("  Help menu activated")
 
         tprint("HELP => ")
 
