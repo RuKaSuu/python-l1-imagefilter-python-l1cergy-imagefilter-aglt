@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 from Logger import set_logs
 
+from Logger import set_logs
+
 
 def Dilate(image):
     """
