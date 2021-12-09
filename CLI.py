@@ -5,8 +5,9 @@ from art import tprint
 from Logger import set_logs
 
 
+
 import filter
-from filter import Dilate, Blur, GrayScale
+from filter import Dilate, Blur, GrayScale, FilterZeTeam
 
 args = sys.argv
 argument = {}
@@ -40,6 +41,11 @@ def Start():
                 set_logs("  grayscale")
                 image = GrayScale(image)
                 set_logs("  grayscale ok")
+
+            if 'FilterZeTeam' in argument:
+                set_logs("  FilterZeTeam")
+                image = FilterZeTeam(image)
+                set_logs("  FilterZeTeam ok")
 
             output = f'{outputdir}/{img_name}'
             cv2.imwrite(output, image)
@@ -81,6 +87,8 @@ for i, a in enumerate(args):
             param = param.split(":")
 
             if param[0] == "grayscale":
+                argument[param[0]] = 0
+            elif param[0] == "FilterZeTeam":
                 argument[param[0]] = 0
             else:
                 argument[param[0]] = int(param[1])
