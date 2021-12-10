@@ -9,12 +9,12 @@ import filters
 from Logger import set_logs
 
 from filters import dilate, blur, grayscale, filterZeTeam
+from video import VideoCapture
 
 args = sys.argv
 argument = {}
 
 def MainController():
-
     def Start():
         """
         Start the program
@@ -22,10 +22,13 @@ def MainController():
         """
         liste = os.listdir('img')
 
+
         for img_name in liste:
 
             if not img_name.endswith(('.jpg', '.png', '.jpeg')):
                 set_logs("  Its not a jpg or png or jpeg, it's a " + img_name)
+
+
             else:
                 img_path = f'{inputdir}/{img_name}'
                 image = cv2.imread(img_path)
@@ -49,9 +52,11 @@ def MainController():
                     image = filterZeTeam.FilterZeTeam(image)
                     set_logs("  FilterZeTeam ok")
 
+
                 output = f'{outputdir}/{img_name}'
                 cv2.imwrite(output, image)
 
+                set_logs("  Conversion ok " + img_name)
                 set_logs("  Conversion ok " + img_name)
                 # print('filtered_img/' + i)
 
@@ -79,6 +84,10 @@ def MainController():
             print("💡 | --input  / --i  => Mettre le nom du dossier à importer")
             print("💡 | --output / --o  => Mettre le nom du dossier où les images seront envoyées")
 
+        elif "--video" == a:
+            video = args[i + 1]
+            VideoCapture(video)
+            print("test")
         elif a == "--list-filters":
             tprint("Filters     available       => ")
             function_list = inspect.getmembers(filters, inspect.ismodule)
