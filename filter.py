@@ -45,9 +45,6 @@ def Blur(image , blur_size):
             return None
 
 
-
-
-
 def GrayScale(image):
     """
         Apply a grayscale to an image
@@ -65,5 +62,11 @@ def GrayScale(image):
 
 
 def FilterZeTeam(image):
+    """
+    Put a text on an image
+    :param image: the image to be filtered
+    :return: The image with a text
+    """
     filter =cv2.putText(image, "#AGLT_CORP", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+    set_logs("  Applying FilterZeTeam")
     return filter
