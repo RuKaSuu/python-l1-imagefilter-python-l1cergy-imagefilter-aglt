@@ -3,11 +3,17 @@ import os
 import sys
 from art import tprint
 from Logger import set_logs
+import  configparser
 
 from filter import Dilate, Blur, GrayScale, FilterZeTeam
 
+configuration = configparser.ConfigParser()
 args = sys.argv
-argument = {}
+argument = {
+    'inputdir' : '',
+    'outputdir' : '',
+    'filter' : '',
+}
 
 def MainController():
 
@@ -23,6 +29,7 @@ def MainController():
             if not img_name.endswith(('.jpg', '.png', '.jpeg')):
                 set_logs("  Its not a jpg or png or jpeg, it's a " + img_name)
             else:
+
                 img_path = f'{inputdir}/{img_name}'
                 image = cv2.imread(img_path)
                 if 'blur' in argument:
@@ -44,6 +51,7 @@ def MainController():
                     set_logs("  FilterZeTeam")
                     image = FilterZeTeam(image)
                     set_logs("  FilterZeTeam ok")
+
 
                 output = f'{outputdir}/{img_name}'
                 cv2.imwrite(output, image)
@@ -74,6 +82,20 @@ def MainController():
             print("💡 | --filter / --f  => Appliquer des filtres aux photos du dossier")
             print("💡 | --input  / --i  => Mettre le nom du dossier à importer")
             print("💡 | --output / --o  => Mettre le nom du dossier où les images seront envoyées")
+
+        elif "--config-files" == a:
+            config = args[i + 1]
+            configuration.read(config)
+
+            inputdir = configuration['DEFAULT']['imputdir']
+            outputdir = configuration['DEFAULT']['outputdir']
+            argument['filter']= configuration['FILTERS']['filters']
+            split = argument['filter'].split('|')
+            for split2 in split:
+                split2= split2.split(':')
+                print(split2)
+
+
 
 
         elif a == "--filter":
